@@ -10,7 +10,9 @@
     "lint:fix": "eslint . --fix",
     "format": "prettier --write \"src/**/*.{js,jsx,json,css,md}\"",
     "preview": "vite preview",
-    "prepare": "husky"
+    "prepare": "husky",
+    "check:merge-conflicts": "git diff --check",
+    "check:file-size": "node scripts/check-file-size.js"
   },
   "dependencies": {
     "clsx": "^2.1.1",
@@ -46,8 +48,11 @@
       "eslint --fix",
       "prettier --write"
     ],
-    "*.{json,css,md}": [
+    "*.{json,css,md,yml,yaml}": [
       "prettier --write"
+    ],
+    "*": [
+      "npm run check:merge-conflicts"
     ]
   }
 }
